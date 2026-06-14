@@ -1,0 +1,101 @@
+<div class="w-full bg-cream-mesh min-h-screen">
+  <div class="max-w-[1650px] mx-auto px-4 sm:px-8 py-20 font-body text-dark-teal">
+    @if (isLoading()) {
+      <div>
+        <div class="text-center mb-16 md:mb-24 mx-auto animate-pulse">
+          <div class="h-10 md:h-14 bg-dark-teal/15 rounded w-3/4 mx-auto mb-6"></div>
+          <div class="h-4 bg-dark-teal/15 rounded w-1/2 mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-16">
+          @for (item of [1, 2, 3, 4]; track $index) {
+            <div class="flex flex-col h-full bg-transparent animate-pulse">
+              <div
+                class="block relative overflow-hidden aspect-4/5 bg-dark-teal/15 rounded-sm"
+              ></div>
+
+              <div class="pt-6 flex flex-col grow space-y-4">
+                <div class="flex justify-between items-baseline gap-4">
+                  <div class="h-3 w-16 bg-dark-teal/15 rounded"></div>
+                  <div class="h-4 w-12 bg-dark-teal/15 rounded"></div>
+                </div>
+
+                <div class="space-y-2 mb-4">
+                  <div class="h-6 w-5/6 bg-dark-teal/15 rounded"></div>
+                </div>
+
+                <div
+                  class="mt-auto flex items-center justify-between pt-5 border-t border-border-teal/10"
+                >
+                  <div class="w-5 h-5 bg-dark-teal/15 rounded-sm"></div>
+
+                  <div class="flex items-center gap-3">
+                    <div class="h-3 w-14 bg-dark-teal/15 rounded"></div>
+                    <div class="w-8 h-8 rounded-full bg-dark-teal/15"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    } @else if (wishlistCount() > 0) {
+      <div>
+        <div class="text-center mb-16 md:mb-24 mx-auto">
+          <h1
+            class="font-serif font-bold text-4xl md:text-6xl text-dark-teal mb-6 tracking-wide animate-fade-in"
+          >
+            Your Wishlist
+          </h1>
+          <p class="text-dark-teal/80 text-base md:text-lg font-light">
+            A personal space for the handcrafted stories you loved.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-16">
+          @for (product of wishlistItems(); track product.id) {
+            <div>
+              <app-products-card [product]="product" />
+            </div>
+          }
+        </div>
+      </div>
+    } @else {
+      <div
+        class="flex flex-col items-center justify-center min-h-[60vh] text-center max-w-md mx-auto px-4"
+      >
+        <div class="mb-8 text-muted-slate/30 transform scale-110">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="64"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+            />
+          </svg>
+        </div>
+
+        <h2 class="font-heading text-2xl md:text-3xl text-dark-teal mb-4 tracking-wide">
+          Your wishlist is empty
+        </h2>
+        <p class="text-muted-slate text-sm leading-relaxed mb-10 font-light">
+          start saving your favorite pieces to your wishlist.
+        </p>
+
+        <a
+          routerLink="/products"
+          class="inline-block w-full sm:w-auto px-10 py-4 bg-dark-teal text-cream-mesh text-xs font-semibold uppercase tracking-[0.25em] hover:bg-egyptian-clay transition-all duration-500 rounded-none shadow-sm"
+        >
+          Explore Collections
+        </a>
+      </div>
+    }
+  </div>
+</div>

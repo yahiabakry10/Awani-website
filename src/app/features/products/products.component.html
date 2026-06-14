@@ -1,0 +1,298 @@
+<section class="w-full bg-cream-mesh min-h-screen">
+  <div class="max-w-[1650px] mx-auto px-4 sm:px-8 py-20 font-body text-dark-teal">
+    <!-- Header Block -->
+    <div class="text-center mb-16 md:mb-24 max-w-2xl mx-auto">
+      <h1 class="font-serif font-bold text-4xl md:text-6xl text-dark-teal1 mb-6 tracking-wide">
+        All Collections
+      </h1>
+      <p class="text-dark-teal/80 text-lg md:text-xl font-light">
+        Explore our complete collection of handcrafted pottery
+      </p>
+    </div>
+
+    <!-- Collection Catalog Section -->
+    <section>
+      <!-- Displaying all products count  -->
+      <div
+        class="flex flex-col sm:flex-row sm:items-center justify-between mb-12 border-b border-border-teal pb-5"
+      >
+        <h2
+          class="text-sm md:text-base uppercase tracking-[0.25em] font-bold text-water-drop font-body mb-2 sm:mb-0"
+        >
+          Curated Works
+        </h2>
+        @if (isLoading()) {
+          <div class="h-4 w-36 bg-dark-teal/10 rounded animate-pulse"></div>
+        } @else {
+          <p class="text-xs md:text-sm text-dark-teal/90 font-light tracking-wide italic">
+            Showing <span class="font-normal text-dark-teal">{{ startIndex() }}</span
+            >–<span class="font-normal text-dark-teal">{{ endIndex() }}</span> of
+            <span class="font-normal text-dark-teal">{{ filteredProducts().length }}</span> Pieces
+          </p>
+        }
+      </div>
+
+      <!-- Layout: Sidebar + Products Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-10 items-start">
+        <!--  Sidebar Controls (Category Filters, Price Slider & Sorting) -->
+        <div
+          class="lg:col-span-1 bg-[#f5f1e8] border border-border-teal/20 p-6 rounded-2xl space-y-8 lg:sticky lg:top-28"
+        >
+          <h3
+            class="text-xs uppercase tracking-[0.2em] font-bold text-dark-teal border-b border-border-teal/5 pb-3"
+          >
+            Filter & Sort
+          </h3>
+
+          <!-- Category Collection List -->
+          <div class="space-y-1">
+            <h4 class="text-xs font-medium uppercase tracking-wider text-dark-teal/70 mb-3">
+              Collection
+            </h4>
+            <nav class="flex flex-col">
+              <button
+                (click)="changeCategory('ALL')"
+                class="group flex items-center justify-between w-full py-3 px-3 text-left transition-all duration-300 cursor-pointer border-b border-border-teal/5 last:border-b-0"
+                [class]="
+                  selectedCategory() === 'ALL'
+                    ? 'bg-dark-teal/5 text-dark-teal'
+                    : 'text-dark-teal/60 hover:text-dark-teal hover:bg-sandy-yellow/10'
+                "
+              >
+                <span class="text-sm font-medium tracking-wide">All Collections</span>
+                <span
+                  class="text-[10px] font-serif text-dark-teal/40 group-hover:text-dark-teal/70 transition-colors"
+                  [class.text-dark-teal]="selectedCategory() === 'ALL'"
+                >
+                  View All
+                </span>
+              </button>
+
+              @for (cat of categories(); track cat.name) {
+                <button
+                  (click)="changeCategory(cat.name)"
+                  class="group flex items-center justify-between w-full py-3 px-3 text-left transition-all duration-300 cursor-pointer border-b border-border-teal/5 last:border-b-0"
+                  [class]="
+                    selectedCategory() === cat.name
+                      ? 'bg-dark-teal/5 text-dark-teal'
+                      : 'text-dark-teal/60 hover:text-dark-teal hover:bg-sandy-yellow/10'
+                  "
+                >
+                  <span class="text-sm font-medium tracking-wide">{{ cat.name }}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform transition-all duration-300"
+                    [class.translate-x-0]="selectedCategory() === cat.name"
+                    [class.-translate-x-1]="selectedCategory() !== cat.name"
+                    [class.opacity-100]="selectedCategory() === cat.name"
+                    [class.opacity-0]="selectedCategory() !== cat.name"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              }
+            </nav>
+          </div>
+
+          <!-- Price Range Slider -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs text-dark-teal">
+              <span class="font-medium uppercase tracking-wider">Max Price</span>
+              <span class="font-serif font-bold text-egyptian-clay text-sm">
+                {{
+                  maxPrice() > absoluteMaxPrice()
+                    ? (absoluteMaxPrice() | currency: 'EGP')
+                    : (maxPrice() | currency: 'EGP')
+                }}
+              </span>
+            </div>
+
+            <input
+              type="range"
+              min="0"
+              [max]="absoluteMaxPrice()"
+              [value]="maxPrice() > absoluteMaxPrice() ? absoluteMaxPrice() : maxPrice()"
+              (input)="onPriceChange($event)"
+              [disabled]="isLoading()"
+              class="w-full h-1 bg-dark-teal/10 rounded-lg appearance-none cursor-pointer accent-egyptian-clay transition-all"
+            />
+
+            <div class="flex justify-between text-xs text-muted-slate font-serif">
+              <span>{{ 0 | currency: 'EGP' }}</span>
+              <span>{{ absoluteMaxPrice() | currency: 'EGP' }}</span>
+            </div>
+          </div>
+
+          <!-- Sort Selection Dropdown -->
+          <div class="space-y-3">
+            <label class="text-xs font-medium text-dark-teal uppercase tracking-wider block"
+              >Sort Order</label
+            >
+            <div class="relative">
+              <select
+                (change)="sortBy.set($any($event.target).value); currentPage.set(1)"
+                [disabled]="isLoading()"
+                class="w-full bg-cream-mesh/30 border border-border-teal/20 rounded-xl px-4 py-3 text-dark-teal text-xs font-medium focus:outline-none focus:border-dark-teal transition-all cursor-pointer appearance-none"
+              >
+                <option value="default">Featured / Default</option>
+                <option value="priceLowHigh">Price: Low to High</option>
+                <option value="priceHighLow">Price: High to Low</option>
+              </select>
+              <!-- aesthetic arrow for dropdown -->
+              <div
+                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-dark-teal/60"
+              >
+                <svg
+                  class="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIN CONTENT: GRID + PAGINATION -->
+        <div class="lg:col-span-3">
+          @if (isLoading()) {
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16"
+            >
+              @for (item of [1, 2, 3, 4, 5, 6]; track $index) {
+                <div class="flex flex-col h-full bg-transparent animate-pulse">
+                  <div
+                    class="block relative overflow-hidden aspect-4/5 bg-dark-teal/15 rounded-sm"
+                  ></div>
+
+                  <div class="pt-6 flex flex-col grow space-y-4">
+                    <div class="flex justify-between items-start gap-4">
+                      <div class="h-3 w-20 bg-dark-teal/15 rounded"></div>
+                      <div class="h-4 w-12 bg-dark-teal/15 rounded"></div>
+                    </div>
+
+                    <div class="space-y-2">
+                      <div class="h-5 w-5/6 bg-dark-teal/15 rounded"></div>
+                      <div class="h-5 w-1/2 bg-dark-teal/15 rounded"></div>
+                    </div>
+
+                    <div
+                      class="flex justify-between items-center mt-auto pt-6 border-t border-border-teal/5"
+                    >
+                      <div class="h-3 w-16 bg-dark-teal/15 rounded"></div>
+                      <div class="flex items-center gap-2">
+                        <div class="h-3 w-16 bg-dark-teal/15 rounded"></div>
+                        <div class="w-7 h-7 rounded-full bg-dark-teal/15"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          } @else {
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16 transition-opacity duration-300"
+              [class.opacity-0]="isFiltering()"
+            >
+              @for (product of paginatedProducts(); track product.id; let idx = $index) {
+                <app-products-card [product]="product" appScrollReveal [delay]="(idx % 3) * 60" />
+              }
+            </div>
+
+            @if (filteredProducts().length === 0) {
+              <div class="text-center py-20">
+                <p class="text-muted-slate italic text-sm">
+                  No pottery pieces match your filtering criteria.
+                </p>
+              </div>
+            }
+
+            @if (totalPages() > 1) {
+              <div
+                class="mt-24 pt-8 border-t border-border-teal flex items-center justify-between font-body text-xs tracking-widest uppercase"
+              >
+                <button
+                  (click)="previousPage()"
+                  [disabled]="currentPage() === 1"
+                  class="flex items-center gap-2 text-water-drop hover:text-egyptian-clay transition-colors disabled:opacity-30 disabled:hover:text-water-drop cursor-pointer disabled:cursor-not-allowed group"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform group-hover:-translate-x-1 transition-transform"
+                  >
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  <span>Previous</span>
+                </button>
+
+                <div class="hidden sm:flex items-center gap-3">
+                  @for (page of pageNumbers(); track page) {
+                    <button
+                      (click)="goToPage(page)"
+                      class="w-10 h-10 rounded-full flex items-center justify-center font-medium transition-all duration-300 cursor-pointer"
+                      [class]="
+                        currentPage() === page
+                          ? 'bg-egyptian-clay text-white'
+                          : 'text-muted-slate hover:text-dark-teal hover:bg-sandy-yellow/20'
+                      "
+                    >
+                      {{ page }}
+                    </button>
+                  }
+                </div>
+
+                <div class="sm:hidden text-muted-slate font-medium">
+                  Page {{ currentPage() }} of {{ totalPages() }}
+                </div>
+
+                <button
+                  (click)="nextPage()"
+                  [disabled]="currentPage() === totalPages()"
+                  class="flex items-center gap-2 text-water-drop hover:text-egyptian-clay transition-colors disabled:opacity-30 disabled:hover:text-water-drop cursor-pointer disabled:cursor-not-allowed group"
+                >
+                  <span>Next</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transform group-hover:translate-x-1 transition-transform"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+            }
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

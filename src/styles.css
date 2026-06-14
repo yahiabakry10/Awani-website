@@ -1,3 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+:root {
+  --water-drop: #00616e; /* Headings */
+  --dark-teal: #00303e; /* Text */
+  --cream-mesh: #ede6cc; /* Background */
+  --sandy-yellow: #f9ce6f; /* Hover */
+  --egyptian-clay: #a82f04; /* Buttons */
+
+  /* Fonts */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+@theme {
+  --color-water-drop: var(--water-drop);
+  --color-dark-teal: var(--dark-teal);
+  --color-cream-mesh: var(--cream-mesh);
+  --color-sandy-yellow: var(--sandy-yellow);
+  --color-egyptian-clay: var(--egyptian-clay);
+  --color-muted-slate: #5a7078;
+  --color-border-teal: rgba(0, 48, 62, 0.1);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 .font-serif {
+  font-family: var(--font-heading);
+}
+
+/**
+** Directive Animation Scroll Reveal 
+**/
+
+.reveal-init {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition:
+    opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}

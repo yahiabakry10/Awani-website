@@ -1,0 +1,44 @@
+<section class="relative w-full overflow-hidden">
+  @for (slide of heroImages(); track slide.url; let index = $index; let first = $first) {
+    <div
+      class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+      [class.opacity-0]="index !== currentSlideIndex()"
+      [class.opacity-100]="index === currentSlideIndex()"
+      [class.pointer-events-none]="index !== currentSlideIndex()"
+    >
+      <img
+        [src]="slide.url"
+        [alt]="slide.title"
+        [attr.loading]="first ? 'eager' : 'lazy'"
+        [attr.fetchpriority]="first ? 'high' : 'auto'"
+        class="w-full h-full object-cover object-top animate-[kenburns_20s_ease-out_infinite]"
+      />
+
+      <div class="absolute inset-0 bg-dark-teal/40"></div>
+
+      <div
+        class="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
+        [class.animate-fade-in-up]="index === currentSlideIndex()"
+      >
+        <p
+          class="text-sandy-yellow text-sm md:text-base uppercase tracking-[0.3em] mb-6 font-light"
+        >
+          {{ slide.subtitle }}
+        </p>
+        <h1
+          class="font-serif text-5xl md:text-7xl lg:text-8xl text-cream-mesh mb-10 tracking-wide max-w-5xl leading-tight"
+        >
+          {{ slide.title }}
+        </h1>
+        <a
+          routerLink="/products"
+          class="bg-cream-mesh text-dark-teal px-10 py-4 text-xs uppercase tracking-widest hover:bg-egyptian-clay hover:text-cream-mesh transition-colors"
+        >
+          Shop Collection
+        </a>
+      </div>
+    </div>
+  }
+
+  <div class="w-full min-h-[80vh] md:min-h-0 md:aspect-16/8 pointer-events-none"></div>
+</section>

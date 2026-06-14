@@ -1,0 +1,146 @@
+<!-- ================= HERO LANDING ZONE ================= -->
+<app-hero />
+
+<!-- Shop By Category Section -->
+<section class="py-24 md:py-32 px-6">
+  <div class="max-w-[1400px] mx-auto">
+    <div class="flex flex-col md:flex-row justify-start items-center mb-16 gap-6">
+      <div>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl text-dark-teal font-bold mb-4 tracking-wide">
+          Shop by Category
+        </h2>
+        <p class="text-muted-slate">
+          Explore our curated collections, designed to bring warmth and character to every corner of
+          your home.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 container mx-auto">
+      @if (isLoading()) {
+        @for (item of [1, 2]; track $index) {
+          <div
+            class="relative h-[60vh] min-h-[450px] bg-dark-teal/10 animate-pulse rounded-sm flex flex-col justify-end p-10 md:p-14"
+          >
+            <div class="flex justify-between items-end w-full">
+              <div class="space-y-4 w-2/3">
+                <div class="h-10 bg-dark-teal/15 rounded w-3/4"></div>
+                <div class="h-4 bg-dark-teal/15 rounded w-1/4"></div>
+              </div>
+              <div class="w-14 h-14 rounded-full bg-dark-teal/15 shrink-0 shadow-lg"></div>
+            </div>
+          </div>
+        }
+      } @else {
+        @for (category of categories(); track category.name) {
+          <a
+            [routerLink]="['/products']"
+            [queryParams]="{ category: category.name }"
+            class="group relative h-[60vh] min-h-[450px] overflow-hidden bg-muted"
+          >
+            <img
+              [src]="category.image"
+              [alt]="category.name"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out"
+            />
+            <div
+              class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-500"
+            ></div>
+
+            <div class="absolute inset-0 p-10 md:p-14 flex flex-col justify-end">
+              <div class="flex justify-between items-end w-full">
+                <div>
+                  <h3
+                    class="text-3xl md:text-5xl font-serif text-white mb-4 tracking-wide drop-shadow-md"
+                  >
+                    {{ category.name }}
+                  </h3>
+                  <p class="text-white/90 font-medium tracking-widest uppercase text-xs md:text-sm">
+                    {{ category.count }} Pieces
+                  </p>
+                </div>
+
+                <div
+                  class="bg-white text-primary w-14 h-14 flex items-center justify-center rounded-full group-hover:bg-sandy-yellow group-hover:text-white transition-colors duration-500 shrink-0 shadow-lg"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="w-6 h-6"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        }
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURED INDEX COLLECTION ================= -->
+<section class="container mx-auto px-4 sm:px-6 py-28 bg-cream-mesh text-dark-teal">
+  <div
+    class="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-border-teal pb-6 gap-4"
+  >
+    <div>
+      <h2
+        class="text-3xl md:text-4xl lg:text-5xl font-heading tracking-wide capitalize text-dark-teal font-bold"
+      >
+        Our Collection
+      </h2>
+    </div>
+    <a
+      routerLink="/products"
+      class="px-5 py-2.5 w-fit bg-dark-teal hover:bg-egyptian-clay text-white transition-all duration-500 text-xs tracking-[0.2em] font-medium"
+      >View All</a
+    >
+  </div>
+
+  <!-- Perfectly integrated spacious 4-column layout grid -->
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-16">
+    @if (isLoading()) {
+      @for (item of [1, 2, 3, 4]; track $index) {
+        <div class="flex flex-col h-full bg-transparent animate-pulse">
+          <div class="block relative overflow-hidden aspect-4/5 bg-dark-teal/15 rounded-sm"></div>
+
+          <div class="pt-6 flex flex-col grow space-y-4">
+            <div class="flex justify-between items-baseline gap-4">
+              <div class="h-3 w-20 bg-dark-teal/15 rounded"></div>
+              <div class="h-4 w-12 bg-dark-teal/15 rounded"></div>
+            </div>
+
+            <div class="space-y-2 mb-4">
+              <div class="h-6 w-5/6 bg-dark-teal/15 rounded"></div>
+            </div>
+
+            <div
+              class="mt-auto flex items-center justify-between pt-5 border-t border-border-teal/10"
+            >
+              <div class="w-5 h-5 bg-dark-teal/15 rounded-sm"></div>
+
+              <div class="flex items-center gap-3">
+                <div class="h-3 w-16 bg-dark-teal/15 rounded"></div>
+                <div class="w-8 h-8 rounded-full bg-dark-teal/15"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    } @else {
+      @for (product of featuredProducts(); track product.id) {
+        <app-products-card [product]="product" />
+      }
+    }
+  </div>
+</section>

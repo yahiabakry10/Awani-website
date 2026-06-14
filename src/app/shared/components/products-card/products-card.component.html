@@ -1,0 +1,115 @@
+<div
+  class="group flex flex-col h-full bg-transparent transition-all duration-300 ease-in-out"
+  [class.opacity-0]="isExiting()"
+  [class.scale-95]="isExiting()"
+  [class.pointer-events-none]="isExiting()"
+>
+  <!-- Image Container -->
+  <div class="block relative overflow-hidden aspect-4/5 bg-[#f0ebe0]">
+    <a [routerLink]="['/products', product().id]" class="block w-full h-full relative">
+      <div class="absolute inset-0 bg-[#f0ebe0]"></div>
+      <img
+        [src]="product().image"
+        [alt]="product().name"
+        class="relative z-10 w-full h-full object-cover mix-blend-multiply transform group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
+      />
+      <!-- Enhanced hover overlay -->
+      <div
+        class="absolute inset-0 z-20 bg-dark-teal/0 group-hover:bg-dark-teal/10 transition-colors duration-700"
+      ></div>
+      <!-- "Quick View" hint on hover -->
+      <div
+        class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      >
+        <span
+          class="text-[10px] uppercase tracking-[0.2em] font-body font-medium text-cream-mesh bg-dark-teal/80 px-4 py-2.5 backdrop-blur-sm"
+        >
+          View Piece
+        </span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Content -->
+  <div class="pt-6 flex flex-col grow">
+    <!-- Category + Price Row -->
+    <div class="flex justify-between items-baseline mb-3 gap-4">
+      <p
+        class="text-muted-slate text-[11px] md:text-xs uppercase tracking-[0.2em] font-body font-medium line-clamp-1"
+      >
+        {{ product().category }}
+      </p>
+      <span
+        class="text-dark-teal text-base md:text-lg tracking-normal font-body font-medium shrink-0 tabular-nums"
+      >
+        {{ product().price | currency: 'EGP' }}
+      </span>
+    </div>
+
+    <!-- Product Name -->
+    <a [routerLink]="['/products', product().id]" class="block mb-8">
+      <h3
+        class="font-heading text-[22px] md:text-[26px] text-dark-teal group-hover:text-water-drop transition-colors duration-300 leading-[1.2]"
+      >
+        {{ product().name }}
+      </h3>
+    </a>
+
+    <!-- Action Row -->
+    <div class="mt-auto flex items-center justify-between pt-5 border-t border-border-teal">
+      <!-- Wishlist -->
+      <button
+        (click)="toggleWishlist(product())"
+        aria-label="Toggle wishlist"
+        class="group/wish transition-all duration-300 active:scale-90"
+        [class.text-egyptian-clay]="wishlistService.isInWishlist(product().id)"
+        [class.text-muted-slate]="!wishlistService.isInWishlist(product().id)"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          [attr.fill]="wishlistService.isInWishlist(product().id) ? 'currentColor' : 'none'"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="transition-transform duration-300 group-hover/wish:scale-110"
+        >
+          <path
+            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+          />
+        </svg>
+      </button>
+
+      <!-- Add to Cart -->
+      <button
+        (click)="addToCart(product())"
+        aria-label="Add to bag"
+        class="group/btn flex items-center gap-3 text-[11px] uppercase tracking-[0.15em] font-body font-semibold text-dark-teal hover:text-egyptian-clay transition-colors"
+      >
+        <span>Add to bag</span>
+        <div
+          class="w-8 h-8 rounded-full border border-dark-teal/20 flex items-center justify-center group-hover/btn:bg-egyptian-clay group-hover/btn:text-cream-mesh group-hover/btn:border-egyptian-clay transition-all duration-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
