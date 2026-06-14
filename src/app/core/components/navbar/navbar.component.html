@@ -1,16 +1,12 @@
 <header
-  class="sticky top-0 z-40 py-4 transition-all duration-500"
-  [class]="
-    isScrolled() ? 'bg-dark-teal shadow-md border-dark-teal/5' : 'bg-cream-mesh border-transparent'
-  "
+  class="sticky top-0 z-40 py-4 bg-dark-teal shadow-md border-dark-teal/5 transition-all duration-500"
 >
   <div class="container mx-auto px-4 md:px-8">
     <div class="flex items-center justify-between">
       <!-- Brand Logo -->
       <a
         routerLink="/"
-        class="text-3xl md:text-5xl font-heading tracking-widest font-bold transition-colors duration-300"
-        [class]="isScrolled() ? 'text-cream-mesh' : 'text-dark-teal'"
+        class="text-3xl md:text-5xl font-heading text-cream-mesh tracking-widest font-bold transition-colors duration-300"
       >
         AWANI
       </a>
@@ -23,8 +19,7 @@
               [routerLink]="link.path"
               routerLinkActive="text-egyptian-clay font-bold"
               [routerLinkActiveOptions]="{ exact: true }"
-              class="text-[12px] uppercase tracking-[0.15em] hover:text-egyptian-clay transition-colors relative group"
-              [class]="isScrolled() ? 'text-cream-mesh' : 'text-dark-teal'"
+              class="text-[12px] uppercase tracking-[0.15em] text-cream-mesh hover:text-egyptian-clay transition-colors relative group"
             >
               {{ link.name }}
               <span
@@ -38,42 +33,40 @@
       <!-- Search bar, Cart Icon & Mobile Menu Icon -->
       <div class="flex items-center gap-2 md:gap-4">
         <!-- Search Bar -->
+        <!-- Desktop Search Bar -->
         <div class="hidden md:block relative w-72 font-body">
           <input
             type="text"
             [value]="searchQuery()"
             (input)="onSearchChange($event)"
             placeholder="Search handcrafted pottery..."
-            class="w-full px-5 py-2.5 text-xs border rounded-full transition-all focus:outline-none"
-            [class]="
-              isScrolled()
-                ? 'bg-white/10 border-white/20 text-cream-mesh placeholder-cream-mesh/50 focus:bg-white focus:text-dark-teal focus:placeholder-dark-teal/40'
-                : 'bg-cream-mesh/40 border-dark-teal/20 text-dark-teal placeholder-dark-teal/40 focus:border-dark-teal focus:bg-cream-mesh'
-            "
+            class="w-full px-5 py-2.5 text-xs border rounded-full transition-all focus:outline-none bg-white/10 border-white/20 text-cream-mesh placeholder-cream-mesh/50 focus:bg-white focus:text-dark-teal focus:placeholder-dark-teal/40"
           />
 
           @if (searchResults().length > 0) {
             <div
-              class="absolute left-0 right-0 mt-3 bg-[#fbf9f4] border border-border-teal/20 rounded-2xl shadow-2xl max-h-72 overflow-y-auto z-50 divide-y divide-border-teal/5 backdrop-blur-sm"
+              class="absolute left-0 right-0 mt-3 bg-[#f5f1e8] border border-dark-teal/10 rounded-2xl shadow-2xl max-h-72 overflow-y-auto z-50 divide-y divide-dark-teal/5"
             >
               @for (product of searchResults(); track product.id) {
                 <a
                   [routerLink]="['/products', product.id]"
                   (click)="closeSearch()"
-                  class="flex items-center gap-4 p-3.5 hover:bg-sandy-yellow/10 transition-all duration-200 group"
+                  class="flex items-center gap-4 p-4 hover:bg-sandy-yellow/10 transition-all duration-200 group"
                 >
-                  <img
-                    [src]="product.image"
-                    [alt]="product.name"
-                    class="w-12 h-12 object-cover rounded-xl shadow-sm group-hover:scale-105 transition-transform"
-                  />
-                  <div class="flex-1">
+                  <div class="w-14 h-14 bg-[#f0ebe0] relative shrink-0 overflow-hidden rounded-lg">
+                    <img
+                      [src]="product.image"
+                      [alt]="product.name"
+                      class="w-full h-full object-cover mix-blend-multiply relative z-10"
+                    />
+                  </div>
+                  <div class="flex-1 min-w-0">
                     <h4
-                      class="text-xs font-semibold text-dark-teal group-hover:text-egyptian-clay transition-colors"
+                      class="text-sm font-semibold text-dark-teal group-hover:text-egyptian-clay transition-colors"
                     >
                       {{ product.name }}
                     </h4>
-                    <p class="text-[10px] text-muted-slate italic mt-0.5">{{ product.category }}</p>
+                    <p class="text-xs text-muted-slate italic mt-0.5">{{ product.category }}</p>
                   </div>
                   <span
                     class="text-xs font-serif text-egyptian-clay/80 opacity-0 group-hover:opacity-100 transition-opacity pr-2"
@@ -88,8 +81,7 @@
         <!-- Mobile Search Icon -->
         <button
           (click)="toggleMobileSearch()"
-          class="md:hidden p-2 transition-colors"
-          [class]="isScrolled() ? 'text-cream-mesh' : 'text-dark-teal'"
+          class="md:hidden p-2 text-cream-mesh transition-colors"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -110,12 +102,7 @@
         <!-- Wishlist Icon -->
         <a
           routerLink="/wishlist"
-          class="relative p-2 transition-colors group block"
-          [class]="
-            isScrolled()
-              ? 'text-cream-mesh hover:text-egyptian-clay'
-              : 'text-dark-teal hover:text-egyptian-clay'
-          "
+          class="relative p-2 text-cream-mesh hover:text-egyptian-clay transition-colors group block"
           aria-label="View Wishlist"
         >
           <svg
@@ -147,8 +134,7 @@
         <!-- Cart Icon -->
         <button
           (click)="cartService.toggleCart()"
-          class="relative p-2 transition-colors group"
-          [class]="isScrolled() ? 'text-cream-mesh' : 'text-dark-teal'"
+          class="relative p-2 text-cream-mesh transition-colors group"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -177,8 +163,7 @@
         <!-- Mobile Menu Icon -->
         <button
           (click)="toggleMobileMenu()"
-          class="lg:hidden p-2 transition-colors"
-          [class]="isScrolled() ? 'text-cream-mesh' : 'text-dark-teal'"
+          class="lg:hidden p-2 text-cream-mesh transition-colors"
         >
           @if (isMobileMenuOpened()) {
             <svg
@@ -220,7 +205,7 @@
   <!-- Mobile Search Bar -->
   @if (isMobileSearchOpened()) {
     <div
-      class="absolute top-full left-0 w-full bg-[#fbf9f4] border-b border-border-teal/20 shadow-xl z-50 p-4 font-body animate-fade-in animate-duration-200"
+      class="absolute top-full left-0 w-full bg-[#f5f1e8] border-b border-dark-teal/10 shadow-2xl z-50 p-4 font-body animate-fade-in animate-duration-200"
     >
       <div class="flex items-center gap-3">
         <input
@@ -229,7 +214,7 @@
           (input)="onSearchChange($event)"
           autofocus
           placeholder="Search items..."
-          class="flex-1 px-4 py-2 text-xs border border-dark-teal/20 rounded-full bg-cream-mesh text-dark-teal focus:outline-none focus:border-dark-teal"
+          class="flex-1 px-4 py-2.5 text-xs border border-dark-teal/20 rounded-full bg-cream-mesh text-dark-teal focus:outline-none focus:border-dark-teal"
         />
         <button
           (click)="closeSearch()"
@@ -240,21 +225,23 @@
       </div>
 
       @if (searchResults().length > 0) {
-        <div class="mt-4 max-h-64 overflow-y-auto divide-y divide-border-teal/5">
+        <div class="mt-4 max-h-64 overflow-y-auto divide-y divide-dark-teal/5">
           @for (product of searchResults(); track product.id) {
             <a
               [routerLink]="['/products', product.id]"
               (click)="closeSearch()"
               class="flex items-center gap-4 py-3 active:bg-sandy-yellow/10"
             >
-              <img
-                [src]="product.image"
-                [alt]="product.name"
-                class="w-10 h-10 object-cover rounded-lg"
-              />
-              <div>
-                <h4 class="text-xs font-semibold text-dark-teal">{{ product.name }}</h4>
-                <p class="text-[10px] text-muted-slate">{{ product.category }}</p>
+              <div class="w-12 h-12 bg-[#f0ebe0] relative shrink-0 overflow-hidden rounded-lg">
+                <img
+                  [src]="product.image"
+                  [alt]="product.name"
+                  class="w-full h-full object-cover mix-blend-multiply relative z-10"
+                />
+              </div>
+              <div class="min-w-0">
+                <h4 class="text-sm font-semibold text-dark-teal">{{ product.name }}</h4>
+                <p class="text-xs text-muted-slate">{{ product.category }}</p>
               </div>
             </a>
           }

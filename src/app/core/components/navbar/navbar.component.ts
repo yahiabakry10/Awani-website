@@ -1,21 +1,10 @@
-import {
-  Component,
-  HostListener,
-  inject,
-  OnDestroy,
-  OnInit,
-  signal,
-  WritableSignal,
-  NgZone,
-  PLATFORM_ID,
-} from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, inject, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { CartService } from '../../services/cart-service/cart.service';
-import { NavLinks } from './models/navlinks/links.interface';
 import { filter, Subscription } from 'rxjs';
+import { CartService } from '../../services/cart-service/cart.service';
 import { ProductsService } from '../../services/products-service/products.service';
 import { WishlistService } from '../../services/wishlist-service/wishlist.service';
+import { NavLinks } from './models/navlinks/links.interface';
 
 @Component({
   selector: 'app-navbar',
@@ -28,15 +17,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   readonly wishlistService = inject(WishlistService);
   private readonly router = inject(Router);
   private readonly productsService = inject(ProductsService);
-  private readonly ngZone = inject(NgZone);
-  private readonly platformId = inject(PLATFORM_ID);
-
-  private scrollListener?: () => void;
 
   private routerSubscription!: Subscription;
 
   isMobileMenuOpened: WritableSignal<boolean> = signal<boolean>(false);
-  isScrolled: WritableSignal<boolean> = signal<boolean>(false);
   isMobileSearchOpened: WritableSignal<boolean> = signal<boolean>(false); // to toggle search bar on mobile
 
   /* Search state */
@@ -58,28 +42,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.isMobileMenuOpened.set(false);
         this.closeSearch();
       });
-
-    if (isPlatformBrowser(this.platformId)) {
-      this.ngZone.runOutsideAngular(() => {
-        this.scrollListener = () => {
-          const scrolled = window.scrollY > 20;
-          if (scrolled !== this.isScrolled()) {
-            this.ngZone.run(() => {
-              this.isScrolled.set(scrolled);
-            });
-          }
-        };
-        window.addEventListener('scroll', this.scrollListener, { passive: true });
-      });
-    }
   }
 
   ngOnDestroy(): void {
     if (this.routerSubscription) {
       this.routerSubscription.unsubscribe();
-    }
-    if (this.scrollListener && isPlatformBrowser(this.platformId)) {
-      window.removeEventListener('scroll', this.scrollListener);
     }
   }
 
