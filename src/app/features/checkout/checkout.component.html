@@ -1,15 +1,15 @@
 <div class="max-w-[1400px] mx-auto px-6 py-16 font-body">
   @if (!orderPlaced()) {
-    <h1 class="text-center mb-12 uppercase tracking-widest text-[36px] text-dark-teal font-heading">
+    <h1
+      class="text-center mb-12 tracking-widest text-2xl md:text-[40px] text-dark-teal font-heading font-bold"
+    >
       Checkout
     </h1>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
       <form [formGroup]="checkoutForm" (ngSubmit)="handleSubmit()" class="space-y-8">
         <div>
-          <h2 class="mb-8 uppercase tracking-wider text-[18px] text-dark-teal border-b pb-2">
-            Delivery Information
-          </h2>
+          <h2 class="mb-8 text-2xl text-dark-teal font-bold border-b pb-2">Delivery Information</h2>
 
           <div class="space-y-6">
             <div class="group">
@@ -140,9 +140,7 @@
       </form>
 
       <div class="lg:sticky lg:top-8 h-fit">
-        <h2 class="mb-8 uppercase tracking-wider text-[18px] text-dark-teal border-b pb-2">
-          Order Summary
-        </h2>
+        <h2 class="mb-8 text-2xl text-dark-teal font-bold border-b pb-2">Order Summary</h2>
         <div class="bg-[#F9F9F9] p-8 rounded-sm">
           <div class="space-y-6 max-h-[400px] overflow-y-auto pr-2">
             @for (item of cartItems(); track item.product.id) {

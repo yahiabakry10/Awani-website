@@ -203,7 +203,7 @@
             </div>
           } @else {
             <div
-              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16 transition-opacity duration-300"
+              class="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16 transition-opacity duration-300"
               [class.opacity-0]="isFiltering()"
             >
               @for (product of paginatedProducts(); track product.id; let idx = $index) {
