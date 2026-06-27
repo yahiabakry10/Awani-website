@@ -24,17 +24,17 @@ export class HeroComponent {
 
   readonly heroImages = signal<HeroSlide[]>([
     {
-      url: '/images/Hero-1.png',
+      url: '/images/Hero-1.webp',
       title: 'Elevate Your Living Space',
       subtitle: 'New Autumn Collection',
     },
     {
-      url: '/images/Hero-2.png',
+      url: '/images/Hero-2.webp',
       title: 'Simplicity Meets Comfort',
       subtitle: 'Minimalist Furniture Design',
     },
     {
-      url: '/images/Hero-3.png',
+      url: '/images/Hero-3.webp',
       title: 'Crafted For Modern Homes',
       subtitle: 'Handmade Artifacts & Decor',
     },

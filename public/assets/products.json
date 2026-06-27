@@ -4,404 +4,475 @@
     "name": "Koob El Qadeem",
     "category": "Mugs & Cups",
     "price": 330,
-    "image": "/images/Koob-ElQadeem.png",
+    "image": "/images/Koob-ElQadeem.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "9 cm diameter x 10 cm length.",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Koob-ElQadeem.png"]
+    "gallery": ["/images/Koob-ElQadeem.webp"]
   },
   {
     "id": 2,
     "name": "Koob El Hirfa",
     "category": "Mugs & Cups",
     "price": 400,
-    "image": "/images/Koob-ElHarifa.png",
+    "image": "/images/Koob-ElHarifa.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "10 cm length x 9 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Koob-ElHarifa.png"]
+    "gallery": ["/images/Koob-ElHarifa.webp"]
   },
   {
     "id": 3,
     "name": "Koob El Dar",
     "category": "Mugs & Cups",
     "price": 380,
-    "image": "/images/Koob-ElDar.png",
+    "image": "/images/Koob-ElDar.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "9 cm diameter x 10 cm length",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Koob-ElDar.png"]
+    "gallery": ["/images/Koob-ElDar.webp"]
   },
   {
     "id": 4,
     "name": "Salseel Vase",
-    "category": "Mugs & Cups",
+    "category": "Vases",
     "price": 1000,
-    "image": "/images/Salseel-Vase.jfif",
+    "image": "/images/Salseel-Vase.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "24 cm height",
-    "gallery": ["/images/Salseel-Vase.jfif", "/images/Salseel-Vase-2.png"]
+    "gallery": ["/images/Salseel-Vase.webp", "/images/Salseel-Vase-2.webp"]
   },
   {
     "id": 5,
     "name": "Baskeeta Bowl",
     "category": "Serving Plates",
     "price": 650,
-    "image": "/images/Baskeeta-Bowl.jfif",
+    "image": "/images/Baskeeta-Bowl.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "24 cm in diameter",
-    "gallery": ["/images/Baskeeta-Bowl.jfif"]
+    "gallery": ["/images/Baskeeta-Bowl.webp"]
   },
   {
     "id": 6,
     "name": "The Moroccan Tanjara",
     "category": "Serving Plates",
     "price": 1000,
-    "image": "/images/The-Moroccan-Tanjara.jfif",
+    "image": "/images/The-Moroccan-Tanjara.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "15 cm height without lid x 18 cm height with lid x 22 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/The-Moroccan-Tanjara.jfif", "/images/The-Moroccan-Tanjara-2.jfif"]
+    "gallery": ["/images/The-Moroccan-Tanjara.webp", "/images/The-Moroccan-Tanjara-2.webp"]
   },
   {
     "id": 7,
     "name": "The Moroccon Tajjine",
     "category": "Serving Plates",
     "price": 1000,
-    "image": "/images/The-Moroccon-Tajjine.jfif",
+    "image": "/images/The-Moroccon-Tajjine.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "12 cm height without lid x 22 cm diameter without lid",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/The-Moroccon-Tajjine.jfif", "/images/The-Moroccon-Tajjine-2.jfif"]
+    "gallery": ["/images/The-Moroccon-Tajjine.webp", "/images/The-Moroccon-Tajjine-2.webp"]
   },
   {
     "id": 8,
     "name": "Wardet El Leil",
     "category": "Mugs & Cups",
     "price": 450,
-    "image": "/images/Wardet-El-Leil.png",
+    "image": "/images/Wardet-El-Leil.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "15 cm height x 18 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Wardet-El-Leil.png"]
+    "gallery": ["/images/Wardet-El-Leil.webp"]
   },
   {
     "id": 9,
     "name": "Sokkar Latte",
     "category": "Mugs & Cups",
     "price": 250,
-    "image": "/images/Sokkar-Latte.png",
+    "image": "/images/Sokkar-Latte.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "9 cm height x 9 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Sokkar-Latte.png"]
+    "gallery": ["/images/Sokkar-Latte.webp"]
   },
   {
     "id": 10,
     "name": "Al Lammah Platter",
     "category": "Serving Plates",
     "price": 850,
-    "image": "/images/Al-Lammah-Platter.jfif",
+    "image": "/images/Al-Lammah-Platter.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "33 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Al-Lammah-Platter.jfif"]
+    "gallery": ["/images/Al-Lammah-Platter.webp"]
   },
   {
     "id": 11,
     "name": "Double The blues platter",
     "category": "Serving Plates",
     "price": 850,
-    "image": "/images/Double-The-blues-platter.jfif",
+    "image": "/images/Double-The-blues-platter.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "25 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Double-The-blues-platter.jfif"]
+    "gallery": ["/images/Double-The-blues-platter.webp"]
   },
   {
     "id": 12,
     "name": "Sahraa Mugs",
     "category": "Mugs & Cups",
     "price": 250,
-    "image": "/images/Sahraa-Mugs.png",
+    "image": "/images/Sahraa-Mugs.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "9 cm height x 8 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Sahraa-Mugs.png"]
+    "gallery": ["/images/Sahraa-Mugs.webp"]
   },
   {
     "id": 13,
     "name": "Ruqan Mugs",
     "category": "Mugs & Cups",
     "price": 250,
-    "image": "/images/Ruqan-Mugs.png",
+    "image": "/images/Ruqan-Mugs.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "9 cm height x 8 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Ruqan-Mugs.png"]
+    "gallery": ["/images/Ruqan-Mugs.webp"]
   },
   {
     "id": 14,
     "name": "Al Lammah Lamaliteen Bowls",
     "category": "Serving Plates",
     "price": 850,
-    "image": "/images/Al-Lammah-Lamaliteen-Bowls.jfif",
+    "image": "/images/Al-Lammah-Lamaliteen-Bowls.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "30 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Al-Lammah-Lamaliteen-Bowls.jfif"]
+    "gallery": ["/images/Al-Lammah-Lamaliteen-Bowls.webp"]
   },
   {
     "id": 15,
     "name": "Hawa Sawa Mugs",
     "category": "Mugs & Cups",
     "price": 250,
-    "image": "/images/Hawa-Sawa-Mugs.png",
+    "image": "/images/Hawa-Sawa-Mugs.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "9 cm height x 8 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Hawa-Sawa-Mugs.png"]
+    "gallery": ["/images/Hawa-Sawa-Mugs.webp"]
   },
   {
     "id": 16,
     "name": "Hekayat mugs",
     "category": "Mugs & Cups",
     "price": 250,
-    "image": "/images/Hekayat-mugs.png",
+    "image": "/images/Hekayat-mugs.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "9 cm height x 8 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Hekayat-mugs.png"]
+    "gallery": ["/images/Hekayat-mugs.webp"]
   },
   {
     "id": 17,
     "name": "Qahwa Shots",
     "category": "Mugs & Cups",
     "price": 100,
-    "image": "/images/Qahwa-Shots-1.png",
+    "image": "/images/Qahwa-Shots-1.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "5 cm height x 5 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Qahwa-Shots-1.png", "/images/Qahwa-Shots-2.png"]
+    "gallery": ["/images/Qahwa-Shots-1.webp", "/images/Qahwa-Shots-2.webp"]
   },
   {
     "id": 18,
     "name": "Sahara Set",
     "category": "Serving Plates",
     "price": 600,
-    "image": "/images/Sahara-Set.png",
+    "image": "/images/Sahara-Set.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "Set of 3 Dimensions: Large: 21 cm, Medium: 19 cm, Small: 17 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Sahara-Set.png"]
+    "gallery": ["/images/Sahara-Set.webp"]
   },
   {
     "id": 19,
     "name": "Koob El Asala",
     "category": "Mugs & Cups",
     "price": 400,
-    "image": "/images/Koob-ElAsala.png",
+    "image": "/images/Koob-ElAsala.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "8 cm length x 8 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Koob-ElAsala.png"]
+    "gallery": ["/images/Koob-ElAsala.webp"]
   },
   {
     "id": 20,
     "name": "Koob El Turath",
     "category": "Mugs & Cups",
     "price": 400,
-    "image": "/images/Koob-ElTurath.png",
+    "image": "/images/Koob-ElTurath.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "7 cm length x 10 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Koob-ElTurath.png"]
+    "gallery": ["/images/Koob-ElTurath.webp"]
   },
   {
     "id": 21,
     "name": "Koob El Wanas",
     "category": "Mugs & Cups",
     "price": 350,
-    "image": "/images/Koob-ElWanas.png",
+    "image": "/images/Koob-ElWanas.webp",
     "description": "Each piece is lovingly handcrafted and truly one of a kind, with subtle variations that make it uniquely yours.",
     "dimensions": "7 cm length x 11 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Koob-ElWanas.png", "/images/Koob-ElWanas-2.png"]
+    "gallery": ["/images/Koob-ElWanas.webp", "/images/Koob-ElWanas-2.webp"]
   },
   {
     "id": 22,
     "name": "Koob El Hakaway",
     "category": "Mugs & Cups",
     "price": 500,
-    "image": "/images/Koob-ElHakaway.png",
+    "image": "/images/Koob-ElHakaway.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "10 cm length x 9 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Koob-ElHakaway.png", "/images/Koob-ElHakaway-2.png"]
+    "gallery": ["/images/Koob-ElHakaway.webp", "/images/Koob-ElHakaway-2.webp"]
   },
   {
     "id": 23,
     "name": "Organza Stones",
     "category": "Serving Plates",
     "price": 1000,
-    "image": "/images/Organza-Stones.png",
+    "image": "/images/Organza-Stones.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "30 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Organza-Stones.png"]
+    "gallery": ["/images/Organza-Stones.webp"]
   },
   {
     "id": 24,
     "name": "Qadarat Qadar",
     "category": "Serving Plates",
     "price": 1250,
-    "image": "/images/Qadarat-Qadar.png",
+    "image": "/images/Qadarat-Qadar.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "Available Sizes: 36 cm, 39 cm, and 40 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Qadarat-Qadar.png"]
+    "gallery": ["/images/Qadarat-Qadar.webp"]
   },
   {
     "id": 25,
     "name": "Diyafa Bowl",
     "category": "Serving Plates",
     "price": 1250,
-    "image": "/images/Diyafa-Bowl.png",
+    "image": "/images/Diyafa-Bowl.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "30 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Diyafa-Bowl.png", "/images/Diyafa-Bowl-1.png", "/images/Diyafa-Bowl-2.png"]
+    "gallery": [
+      "/images/Diyafa-Bowl.webp",
+      "/images/Diyafa-Bowl-1.webp",
+      "/images/Diyafa-Bowl-2.webp"
+    ]
   },
   {
     "id": 26,
     "name": "Koub Al-Raml",
     "category": "Mugs & Cups",
     "price": 125,
-    "image": "/images/Koub-Al-Raml-1.png",
+    "image": "/images/Koub-Al-Raml-1.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "5 cm height x 5 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Koub-Al-Raml-1.png", "/images/Koub-Al-Raml-2.png"]
+    "gallery": ["/images/Koub-Al-Raml-1.webp", "/images/Koub-Al-Raml-2.webp"]
   },
   {
     "id": 27,
     "name": "Sahn Al Bahr Al Azraq",
     "category": "Serving Plates",
     "price": 550,
-    "image": "/images/Sahn-Al-Bahr Al-Azraq.png",
+    "image": "/images/Sahn-Al-Bahr Al-Azraq.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "30 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Sahn-Al-Bahr Al-Azraq.png"]
+    "gallery": ["/images/Sahn-Al-Bahr Al-Azraq.webp"]
   },
   {
     "id": 28,
     "name": "Blues & Blues Big Platter",
     "category": "Serving Plates",
     "price": 1000,
-    "image": "/images/Blues&Blues-Big-Platter.png",
+    "image": "/images/Blues&Blues-Big-Platter.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "40 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Blues&Blues-Big-Platter.png"]
+    "gallery": ["/images/Blues&Blues-Big-Platter.webp"]
   },
   {
     "id": 29,
     "name": "Blues & Blues flat Platter",
     "category": "Serving Plates",
     "price": 850,
-    "image": "/images/Blues&Blues-flat-Platter.png",
+    "image": "/images/Blues&Blues-flat-Platter.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "35 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Blues&Blues-flat-Platter.png"]
+    "gallery": ["/images/Blues&Blues-flat-Platter.webp"]
   },
   {
     "id": 30,
     "name": "The Loop Mug",
     "category": "Mugs & Cups",
     "price": 125,
-    "image": "/images/The-Loop-Mug.png",
+    "image": "/images/The-Loop-Mug.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "7 cm height x 7 cm diameter",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/The-Loop-Mug.png"]
+    "gallery": ["/images/The-Loop-Mug.webp"]
   },
   {
     "id": 31,
     "name": "El Marakby Bowl",
     "category": "Serving Plates",
     "price": 700,
-    "image": "/images/ElMarakby-Bowl.png",
+    "image": "/images/ElMarakby-Bowl.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "24 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/ElMarakby-Bowl.png"]
+    "gallery": ["/images/ElMarakby-Bowl.webp"]
   },
   {
     "id": 32,
     "name": "Organic Organza Piece",
     "category": "Serving Plates",
     "price": 550,
-    "image": "/images/Organic-Organza-Piece-1.png",
+    "image": "/images/Organic-Organza-Piece-1.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "30 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Organic-Organza-Piece-1.png", "/images/Organic-Organza-Piece-2.png"]
+    "gallery": ["/images/Organic-Organza-Piece-1.webp", "/images/Organic-Organza-Piece-2.webp"]
   },
   {
     "id": 33,
     "name": "Tabaq Bula",
     "category": "Serving Plates",
     "price": 550,
-    "image": "/images/Tabaq-Bula.jpeg",
+    "image": "/images/Tabaq-Bula.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "24 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Tabaq-Bula.jpeg"]
+    "gallery": ["/images/Tabaq-Bula.webp"]
   },
   {
     "id": 34,
     "name": "Tamereyat l Tamereyat 15 cm",
     "category": "Serving Plates",
     "price": 400,
-    "image": "/images/Tamereyat-l-Tamereyat.jpeg",
+    "image": "/images/Tamereyat-l-Tamereyat.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "15 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Tamereyat-l-Tamereyat.jpeg"]
+    "gallery": ["/images/Tamereyat-l-Tamereyat.webp"]
   },
   {
     "id": 35,
     "name": "Tamereyat l Tamereyat 20 cm",
     "category": "Serving Plates",
     "price": 600,
-    "image": "/images/Tamereyat-l-Tamereyat.jpeg",
+    "image": "/images/Tamereyat-l-Tamereyat.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "20 cm",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Tamereyat-l-Tamereyat.jpeg"]
+    "gallery": ["/images/Tamereyat-l-Tamereyat.webp"]
   },
   {
     "id": 36,
     "name": "Qadert Sakina",
     "category": "Serving Plates",
     "price": 1200,
-    "image": "/images/Qadert-Sakina.jfif",
+    "image": "/images/Qadert-Sakina.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "This piece is 22 cm high without the lid and 30 cm high with the lid.",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Qadert-Sakina.jfif"]
+    "gallery": ["/images/Qadert-Sakina.webp"]
   },
   {
     "id": 37,
     "name": "Halzuna Stand-up bowl",
     "category": "Serving Plates",
     "price": 1000,
-    "image": "/images/Halzuna-Stand-up-bowl.jfif",
+    "image": "/images/Halzuna-Stand-up-bowl.webp",
     "description": "Each piece is handmade, so it may look slightly different from the photos. These small differences make every piece special and one of a kind.",
     "dimensions": "This piece is 14 cm high and 26 cm in diameter.",
     "usage": "Dishwasher and microwave safe.",
-    "gallery": ["/images/Halzuna-Stand-up-bowl.jfif", "/images/Halzuna-Stand-up-bowl-2.png"]
+    "gallery": ["/images/Halzuna-Stand-up-bowl.webp", "/images/Halzuna-Stand-up-bowl-2.webp"]
+  },
+  {
+    "id": 38,
+    "name": "Sukun",
+    "category": "Vases",
+    "price": 1000,
+    "image": "/images/Sukun.webp",
+    "dimensions": "Available in 35 cm height.",
+    "gallery": ["/images/Sukun.webp"]
+  },
+  {
+    "id": 39,
+    "name": "Awani Sakina",
+    "category": "Vases",
+    "price": 1000,
+    "image": "/images/Awani-Sakina.webp",
+    "dimensions": "Available in 30 cm height.",
+    "gallery": ["/images/Awani-Sakina.webp"]
+  },
+  {
+    "id": 40,
+    "name": "Olat Zaman",
+    "category": "Vases",
+    "price": 1000,
+    "image": "/images/Olat-Zaman.webp",
+    "dimensions": "Available in 30 cm height.",
+    "gallery": ["/images/Olat-Zaman.webp"]
+  },
+  {
+    "id": 41,
+    "name": "Hekayat",
+    "category": "Vases",
+    "price": 850,
+    "image": "/images/Hekayat.webp",
+    "description": "Available Color: Vanilla Latte a soft mix between beige and off-white",
+    "dimensions": "Available in 20, 25, 30 cm height.",
+    "gallery": ["/images/Hekayat.webp"]
+  },
+  {
+    "id": 42,
+    "name": "Olat El Hana",
+    "category": "Vases",
+    "price": 850,
+    "image": "/images/Olat-ElHana.webp",
+    "description": "Available Color: Vanilla Latte a soft mix between beige and off-white",
+    "dimensions": "Available in 20, 25, 30 cm height.",
+    "gallery": ["/images/Olat-ElHana.webp"]
+  },
+  {
+    "id": 43,
+    "name": "Aziiza",
+    "category": "Vases",
+    "price": 850,
+    "image": "/images/Aziiza.webp",
+    "description": "Available Color: Vanilla Latte a soft mix between beige and off-white",
+    "dimensions": "Available in 20, 25, 30 cm height.",
+    "gallery": ["/images/Aziiza.webp"]
+  },
+  {
+    "id": 44,
+    "name": "Sagheeira",
+    "category": "Vases",
+    "price": 850,
+    "image": "/images/Sagheeira.webp",
+    "description": "Available Color: Vanilla Latte a soft mix between beige and off-white",
+    "dimensions": "Available in 20, 25, 30 cm height.",
+    "gallery": ["/images/Sagheeira.webp"]
   }
 ]

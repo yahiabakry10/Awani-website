@@ -36,7 +36,7 @@ export class ProductsService {
   private readonly productsCache$: Observable<Product[]> = this.http
     .get<Product[]>('/assets/products.json')
     .pipe(
-      delay(1000), // Added delay to simulate network delay
+      delay(500), // Added delay to simulate network delay
       tap(() => this.loading.set(false)), // canceling loading state after successfull fetch
       catchError((error) => {
         console.error('Data Fetching Error:', error);
@@ -64,14 +64,17 @@ export class ProductsService {
 
     const uniqueCategoryNames = [...new Set(allProducts.map((p) => p.category))];
 
+    const categoryImages: Record<string, string> = {
+      'Mugs & Cups': '/images/Mugs&CupsCat.webp',
+      'Serving Plates': '/images/ServingPlatesCat.webp',
+      Vases: '/images/VasesCat.webp',
+    };
+
     return uniqueCategoryNames.map((name) => ({
       name,
       count: allProducts.filter((p) => p.category === name).length,
-      // Placeholder strategy: Real apps would store category images in a CMS or DB
-      image:
-        name === 'Mugs & Cups'
-          ? 'https://images.unsplash.com/photo-1772485718354-6966d953be57?w=800'
-          : 'https://images.unsplash.com/photo-1610701596061-2ecf227e85b2?w=800',
+      // Fallback image
+      image: categoryImages[name] || '/images/Mugs&CupsCat.webp',
     }));
   });
 

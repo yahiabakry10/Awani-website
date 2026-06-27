@@ -3,6 +3,7 @@ import { ProductsService } from '../../core/services/products-service/products.s
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CartService } from '../../core/services/cart-service/cart.service';
+import { WishlistService } from '../../core/services/wishlist-service/wishlist.service';
 import { CommonModule, CurrencyPipe, Location } from '@angular/common';
 import { Product } from '../../core/models/product.model';
 import { ProductsCardComponent } from '../../shared/components/products-card/products-card.component';
@@ -20,6 +21,7 @@ export class ProductDetailsComponent {
   private readonly location = inject(Location);
   private readonly productsService = inject(ProductsService);
   private readonly cartService = inject(CartService);
+  public readonly wishlistService = inject(WishlistService);
 
   /**
    * Loading state
@@ -105,5 +107,12 @@ export class ProductDetailsComponent {
    */
   addToCart(product: Product): void {
     this.cartService.addToCart(product);
+  }
+
+  /**
+   * Wishlist interaction proxy.
+   */
+  toggleWishlist(product: Product): void {
+    this.wishlistService.toggleWishlist(product);
   }
 }

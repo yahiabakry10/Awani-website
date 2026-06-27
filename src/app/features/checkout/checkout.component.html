@@ -176,55 +176,85 @@
               <span class="text-egyptian-clay">{{ totalAmount() }} EGP</span>
             </div>
           </div>
+
+          <!-- Handmade & Delivery Note -->
+          <div
+            class="mt-8 p-4 bg-egyptian-clay/5 border-l-2 border-egyptian-clay flex items-start gap-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-egyptian-clay shrink-0 mt-0.5"
+            >
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+              />
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+              <line x1="12" y1="22.08" x2="12" y2="12" />
+            </svg>
+            <p class="text-sm text-dark-teal/90 leading-relaxed">
+              Your order is handmade with care and delivered within 2-5 working days. We're always
+              improving to bring it to you faster.
+            </p>
+          </div>
         </div>
       </div>
     </div>
   } @else {
-    <div class="max-w-[600px] mx-auto text-center py-20">
-      <div class="mb-8 inline-block p-6 rounded-full bg-green-50 text-green-600">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="64"
-          height="64"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-          <polyline points="22 4 12 14.01 9 11.01" />
-        </svg>
-      </div>
-      <h2 class="text-[32px] text-dark-teal font-heading uppercase mb-4">Order Received!</h2>
-      <p class="text-gray-600 mb-8 leading-relaxed">
-        Thank you for your order. We've sent the details to our team and will contact you shortly to
-        confirm delivery.
-      </p>
-
-      @if (checkoutForm.get('paymentMethod')?.value === 'instapay') {
-        <div class="mb-10 p-6 bg-green-50/50 border border-green-200 rounded-sm">
-          <p class="text-sm text-gray-700 mb-4 font-medium">
-            Please click the button below to send your InstaPay transfer screenshot via WhatsApp to
-            confirm your order:
-          </p>
-          <a
-            [href]="getWhatsAppLink()"
-            target="_blank"
-            class="inline-flex items-center gap-2 px-8 py-4 bg-[#25D366] text-white uppercase text-[12px] font-bold tracking-widest hover:bg-[#20ba56] transition-all rounded-sm shadow-sm"
+    <div class="fixed inset-0 overflow-y-auto bg-white flex items-center justify-center px-6">
+      <div class="max-w-[600px] w-full text-center py-20">
+        <div class="mb-8 inline-block p-6 rounded-full bg-green-50 text-green-600">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="64"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           >
-            Send Screenshot via WhatsApp
-          </a>
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
         </div>
-      }
+        <h2 class="text-[32px] text-dark-teal font-heading uppercase mb-4">Order Received!</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Thank you for your order. We've sent the details to our team and will contact you shortly
+          to confirm delivery.
+        </p>
 
-      <a
-        routerLink="/"
-        class="px-10 py-4 border border-dark-teal text-dark-teal uppercase text-[11px] tracking-widest hover:bg-dark-teal hover:text-white transition-all block w-fit mx-auto"
-      >
-        Return to Home
-      </a>
+        @if (checkoutForm.get('paymentMethod')?.value === 'instapay') {
+          <div class="mb-10 p-6 bg-green-50/50 border border-green-200 rounded-sm">
+            <p class="text-sm text-gray-700 mb-4 font-medium">
+              Please click the button below to send your InstaPay transfer screenshot via WhatsApp
+              to confirm your order:
+            </p>
+            <a
+              [href]="getWhatsAppLink()"
+              target="_blank"
+              class="inline-flex items-center gap-2 px-8 py-4 bg-[#25D366] text-white uppercase text-[12px] font-bold tracking-widest hover:bg-[#20ba56] transition-all rounded-sm shadow-sm"
+            >
+              Send Screenshot via WhatsApp
+            </a>
+          </div>
+        }
+
+        <a
+          routerLink="/"
+          class="px-10 py-4 border border-dark-teal text-dark-teal uppercase text-[11px] tracking-widest hover:bg-dark-teal hover:text-white transition-all block w-fit mx-auto"
+        >
+          Return to Home
+        </a>
+      </div>
     </div>
   }
 </div>

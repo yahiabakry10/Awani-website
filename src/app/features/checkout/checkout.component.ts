@@ -68,7 +68,7 @@ export class CheckoutComponent {
      * We use an effect to reactively monitor the cart state. If the user
      * empties their cart (e.g., via a global drawer) while on the checkout page,
      * we gently redirect them back to the products.
-     * 
+     *
      * Note: 'setTimeout' is used to push the navigation to the next macro-task,
      * preventing 'ExpressionChangedAfterItHasBeenCheckedError' during initialization.
      */
@@ -163,12 +163,5 @@ export class CheckoutComponent {
 
     // 3. Purge the cart now that the order is confirmed
     this.cartService.clearCart();
-
-    /**
-     * 4. Auto-redirect to home after a delay.
-     * We use a generous 15s delay to ensure the user has time to interact
-     * with the "Send WhatsApp" button if they chose InstaPay.
-     */
-    setTimeout(() => this.router.navigate(['/']), 15000);
   }
 }
