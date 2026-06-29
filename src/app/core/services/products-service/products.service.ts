@@ -1,24 +1,26 @@
-import { HttpClient } from '@angular/common/http';
-import { computed, inject, Injectable, Signal, signal, WritableSignal } from '@angular/core';
+import { computed, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import {
   catchError,
   debounceTime,
-  delay,
   distinctUntilChanged,
+  from, // Converts Supabase Promise into an RxJS Observable
   map,
   Observable,
   of,
   shareReplay,
   tap,
 } from 'rxjs';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { Product } from '../../models/product.model';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  private readonly http = inject(HttpClient);
+  // Supabase client instance
+  private readonly supabase: SupabaseClient;
 
   /**
    * Loading State
@@ -27,36 +29,44 @@ export class ProductsService {
 
   /**
    * DATA ACCESS LAYER:
-   * We fetch products from a static JSON file. In a real-world scenario,
-   * this would be a REST API endpoint.
-   *
-   * 'shareReplay(1)' is a critical optimization: it ensures that the HTTP request
-   * is made only once and the result is cached for all subsequent subscribers.
+   * Fetches live data from Supabase instead of HttpClient and local JSON file.
    */
-  private readonly productsCache$: Observable<Product[]> = this.http
-    .get<Product[]>('/assets/products.json')
-    .pipe(
-      delay(500), // Added delay to simulate network delay
-      tap(() => this.loading.set(false)), // canceling loading state after successfull fetch
-      catchError((error) => {
-        console.error('Data Fetching Error:', error);
-        this.loading.set(false); // canceling loading state in case of error
-        return of([]); // return empty array in case of error
-      }),
-      shareReplay(1), // caches the last emitted value so all subscribers get it immediately
-    );
+  private readonly productsCache$: Observable<Product[]>;
 
   /**
    * REACTIVE STATE:
-   * Converting the Observable to a Signal for a more modern, synchronous-like
-   * developer experience in templates and other signals.
+   * The core read-only signal that components consume.
    */
-  readonly products = toSignal(this.productsCache$, { initialValue: [] as Product[] });
+  readonly products: Signal<Product[]>;
+
+  constructor() {
+    // Initialize Supabase client using environment variables
+    this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
+
+    // Build the reactive stream to fetch and cache products from Supabase
+    this.productsCache$ = from(
+      this.supabase.from('products').select('*').order('id', { ascending: true }), // Keeps products sorted consistently by ID
+    ).pipe(
+      map(({ data, error }) => {
+        if (error) throw error;
+        return (data as Product[]) || [];
+      }),
+      tap(() => this.loading.set(false)), // Turn off loading state once data is successfully fetched
+      catchError((error) => {
+        console.error('Supabase Fetching Error:', error);
+        this.loading.set(false);
+        return of([]); // Returns an empty array to prevent application crash on network error
+      }),
+      shareReplay(1), // Caches the result to avoid redundant network requests during navigation
+    );
+
+    // Connect the cached observable to the UI signal
+    this.products = toSignal(this.productsCache$, { initialValue: [] as Product[] });
+  }
 
   /**
    * DERIVED STATE: Categories
-   * We derive unique categories and their metadata directly from the product list.
-   * This ensures that the category list is always in sync with the available products.
+   * Dynamically extracts unique categories and counts from the fetched products.
    */
   readonly categories = computed(() => {
     const allProducts = this.products();
@@ -73,21 +83,19 @@ export class ProductsService {
     return uniqueCategoryNames.map((name) => ({
       name,
       count: allProducts.filter((p) => p.category === name).length,
-      // Fallback image
       image: categoryImages[name] || '/images/Mugs&CupsCat.webp',
     }));
   });
 
   /**
-   * Retrieval logic for a single product.
-   * Leverages the cached observable to avoid redundant HTTP calls.
+   * Retrieves a single product from the cache to avoid extra API calls.
    */
   getProduct(id: number): Observable<Product | undefined> {
     return this.productsCache$.pipe(map((products) => products.find((p) => p.id === id)));
   }
 
   /**
-   * Filtering logic for category-specific views.
+   * Filters products by category using the cached stream.
    */
   getProductsByCategory(category: string): Observable<Product[]> {
     return this.productsCache$.pipe(
@@ -96,20 +104,20 @@ export class ProductsService {
   }
 
   /**
-   * Products search logic
+   * Reactive Search Logic (Debounced to optimize performance)
    */
   readonly searchQuery: WritableSignal<string> = signal<string>('');
 
-  /* Transforming searchQuery signal into observable to apply RXJS methods - debounce */
+  // Transform signal into observable to apply RxJS operators
   readonly debouncedQuery$ = toObservable(this.searchQuery).pipe(
-    debounceTime(300), // wait for 300ms before emitting
-    distinctUntilChanged(), // dont emit if the value is same as previous
+    debounceTime(300), // Wait for 300ms pause in typing
+    distinctUntilChanged(), // Only emit if the search term changed
   );
 
-  /* Transforming searchQuery again into computed signal to use it */
+  // Transform back to signal for template usage
   readonly debouncedSearchQuery = toSignal(this.debouncedQuery$, { initialValue: '' });
 
-  /* Get filtered search results */
+  // Computed results based on search input
   readonly searchResults: Signal<Product[]> = computed(() => {
     const query = this.debouncedSearchQuery().toLowerCase().trim();
     if (!query) {
