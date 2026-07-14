@@ -20,7 +20,7 @@
       @if (isLoading()) {
         @for (item of [1, 2]; track $index) {
           <div
-            class="relative h-[60vh] min-h-[450px] bg-dark-teal/10 animate-pulse rounded-sm flex flex-col justify-end p-10 md:p-14"
+            class="relative h-[60vh] min-h-[450px] bg-dark-teal/10 animate-pulse rounded-md flex flex-col justify-end p-10 md:p-14"
           >
             <div class="flex justify-between items-end w-full">
               <div class="space-y-4 w-2/3">
@@ -36,7 +36,7 @@
           <a
             [routerLink]="['/products']"
             [queryParams]="{ category: category.name }"
-            class="group relative h-[60vh] min-h-[450px] overflow-hidden bg-muted"
+            class="group relative h-[60vh] min-h-[450px] overflow-hidden bg-muted rounded-md"
           >
             <img
               [src]="category.image"
