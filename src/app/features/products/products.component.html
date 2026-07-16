@@ -29,10 +29,39 @@
           }
         </div>
 
-        <!-- Filter & Sort Container (Pottera Style) -->
-        <div
-          class="order-1 sm:order-2 flex items-center justify-center sm:justify-end gap-6 sm:gap-8 w-full sm:w-auto sm:ml-auto"
-        >
+        <!-- Mobile Filter Button (Pottera Style) -->
+        <div class="order-1 sm:order-2 flex sm:hidden w-full justify-center mb-2">
+          <button
+            (click)="showMobileFilters.set(true)"
+            class="flex items-center gap-2 px-6 py-2.5 border border-dark-teal/30 rounded-sm text-dark-teal text-xs uppercase tracking-widest font-medium hover:bg-dark-teal/5 transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="4" y1="21" x2="4" y2="14"></line>
+              <line x1="4" y1="10" x2="4" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="3"></line>
+              <line x1="20" y1="21" x2="20" y2="16"></line>
+              <line x1="20" y1="12" x2="20" y2="3"></line>
+              <line x1="1" y1="14" x2="7" y2="14"></line>
+              <line x1="9" y1="8" x2="15" y2="8"></line>
+              <line x1="17" y1="16" x2="23" y2="16"></line>
+            </svg>
+            Filters
+          </button>
+        </div>
+
+        <!-- Desktop Filter & Sort Container (Pottera Style) -->
+        <div class="hidden sm:flex order-2 sm:ml-auto items-center justify-end gap-8 w-auto">
           <!-- 1. Collection Dropdown -->
           <div class="relative">
             <input
@@ -65,7 +94,7 @@
 
             <!-- Floating Collection Panel -->
             <div
-              class="absolute top-full left-0 sm:left-auto sm:right-0 mt-4 w-[260px] sm:w-[280px] bg-[#f5f1e8] z-50 rounded-sm shadow-2xl border border-border-teal/20 opacity-0 scale-95 invisible peer-checked:opacity-100 peer-checked:scale-100 peer-checked:visible transition-all duration-200 ease-out origin-top sm:origin-top-right"
+              class="absolute top-full left-1/2 -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 mt-4 w-[260px] sm:w-[280px] bg-[#f5f1e8] z-50 rounded-sm shadow-2xl border border-border-teal/20 opacity-0 scale-95 invisible peer-checked:opacity-100 peer-checked:scale-100 peer-checked:visible transition-all duration-200 ease-out origin-top sm:origin-top-right"
             >
               <div class="p-3 space-y-2">
                 <div class="flex justify-end items-center">
@@ -173,7 +202,7 @@
 
             <!-- Floating Price Panel -->
             <div
-              class="absolute top-full left-1/2 sm:left-auto sm:right-0 -translate-x-1/2 sm:translate-x-0 mt-4 w-[260px] sm:w-[280px] bg-[#f5f1e8] z-50 rounded-sm shadow-2xl border border-border-teal/20 opacity-0 scale-95 invisible peer-checked:opacity-100 peer-checked:scale-100 peer-checked:visible transition-all duration-200 ease-out origin-top sm:origin-top-right"
+              class="absolute top-full left-1/2 -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 mt-4 w-[260px] sm:w-[280px] bg-[#f5f1e8] z-50 rounded-sm shadow-2xl border border-border-teal/20 opacity-0 scale-95 invisible peer-checked:opacity-100 peer-checked:scale-100 peer-checked:visible transition-all duration-200 ease-out origin-top sm:origin-top-right"
             >
               <div class="p-5 space-y-6">
                 <div class="flex justify-between items-center pb-3 border-b border-border-teal/20">
@@ -263,6 +292,190 @@
           </div>
         </div>
       </div>
+
+      <!-- Mobile Filter Drawer (Slides in from left) -->
+      @if (showMobileFilters()) {
+        <div class="fixed inset-0 z-50 sm:hidden">
+          <!-- Overlay -->
+          <div
+            (click)="showMobileFilters.set(false)"
+            class="absolute inset-0 bg-dark-teal/50 backdrop-blur-sm"
+          ></div>
+
+          <!-- Drawer Panel -->
+          <div
+            class="absolute top-0 left-0 h-full w-[85%] max-w-sm bg-cream-mesh shadow-2xl flex flex-col"
+          >
+            <!-- Drawer Header -->
+            <div class="flex justify-between items-center p-5 border-b border-border-teal/20">
+              <h3 class="font-serif text-xl text-dark-teal tracking-wide">Filters</h3>
+              <button
+                (click)="showMobileFilters.set(false)"
+                class="p-2 hover:bg-dark-teal/5 rounded-full transition-colors text-dark-teal"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Drawer Content -->
+            <div class="flex-1 overflow-y-auto p-5 space-y-8">
+              <!-- 1. Collection Accordion -->
+              <div class="relative">
+                <input type="checkbox" id="mCollectionToggle" class="hidden peer" />
+                <label
+                  for="mCollectionToggle"
+                  class="flex items-center justify-between w-full py-2 border-b border-border-teal/10 text-xs uppercase tracking-widest cursor-pointer text-dark-teal font-medium"
+                >
+                  Filter by Category
+                  <svg
+                    class="fill-current h-3 w-3 transition-transform peer-checked:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                    />
+                  </svg>
+                </label>
+                <div class="pt-2 hidden peer-checked:block">
+                  <nav class="flex flex-col">
+                    <button
+                      (click)="changeCategory('ALL'); showMobileFilters.set(false)"
+                      class="group flex items-center justify-between w-full py-2.5 text-left transition-all duration-300 cursor-pointer border-b border-border-teal/5 last:border-b-0"
+                      [class]="
+                        selectedCategory() === 'ALL'
+                          ? 'bg-dark-teal/5 text-dark-teal'
+                          : 'text-dark-teal/60'
+                      "
+                    >
+                      <span class="text-xs font-medium tracking-wide">All Collections</span>
+                    </button>
+                    @for (cat of categories(); track cat.name) {
+                      <button
+                        (click)="changeCategory(cat.name); showMobileFilters.set(false)"
+                        class="group flex items-center justify-between w-full py-2.5 text-left transition-all duration-300 cursor-pointer border-b border-border-teal/5 last:border-b-0"
+                        [class]="
+                          selectedCategory() === cat.name
+                            ? 'bg-dark-teal/5 text-dark-teal'
+                            : 'text-dark-teal/60'
+                        "
+                      >
+                        <span class="text-xs font-medium tracking-wide">{{ cat.name }}</span>
+                      </button>
+                    }
+                  </nav>
+                </div>
+              </div>
+
+              <!-- 2. Price Accordion -->
+              <div class="relative">
+                <input type="checkbox" id="mPriceToggle" class="hidden peer" />
+                <label
+                  for="mPriceToggle"
+                  class="flex items-center justify-between w-full py-2 border-b border-border-teal/10 text-xs uppercase tracking-widest cursor-pointer text-dark-teal font-medium"
+                >
+                  Price
+                  <svg
+                    class="fill-current h-3 w-3 transition-transform peer-checked:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                    />
+                  </svg>
+                </label>
+                <div class="pt-4 hidden peer-checked:block space-y-4">
+                  <div class="flex items-center justify-between text-xs text-dark-teal">
+                    <span class="font-medium uppercase tracking-wider text-[10px]">Max Price</span>
+                    <span class="font-serif font-bold text-egyptian-clay text-sm">
+                      {{
+                        maxPrice() > absoluteMaxPrice()
+                          ? (absoluteMaxPrice() | currency: 'EGP')
+                          : (maxPrice() | currency: 'EGP')
+                      }}
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    [max]="absoluteMaxPrice()"
+                    [value]="maxPrice() > absoluteMaxPrice() ? absoluteMaxPrice() : maxPrice()"
+                    (input)="onPriceChange($event)"
+                    [disabled]="isLoading()"
+                    class="w-full h-1 bg-dark-teal/10 rounded-md appearance-none cursor-pointer accent-egyptian-clay transition-all"
+                  />
+                  <div class="flex justify-between text-[10px] text-muted-slate font-serif">
+                    <span>{{ 0 | currency: 'EGP' }}</span>
+                    <span>{{ absoluteMaxPrice() | currency: 'EGP' }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Sort Accordion -->
+              <div class="relative">
+                <label
+                  class="flex items-center justify-between w-full py-2 border-b border-border-teal/10 text-xs uppercase tracking-widest cursor-pointer text-dark-teal font-medium"
+                >
+                  Sort by
+                </label>
+                <div class="pt-3 space-y-2">
+                  <button
+                    (click)="
+                      sortBy.set('default'); currentPage.set(1); showMobileFilters.set(false)
+                    "
+                    class="block w-full text-left py-1.5 text-xs"
+                    [class]="
+                      sortBy() === 'default' ? 'text-egyptian-clay font-bold' : 'text-dark-teal/60'
+                    "
+                  >
+                    Featured
+                  </button>
+                  <button
+                    (click)="
+                      sortBy.set('priceLowHigh'); currentPage.set(1); showMobileFilters.set(false)
+                    "
+                    class="block w-full text-left py-1.5 text-xs"
+                    [class]="
+                      sortBy() === 'priceLowHigh'
+                        ? 'text-egyptian-clay font-bold'
+                        : 'text-dark-teal/60'
+                    "
+                  >
+                    Price: Low to High
+                  </button>
+                  <button
+                    (click)="
+                      sortBy.set('priceHighLow'); currentPage.set(1); showMobileFilters.set(false)
+                    "
+                    class="block w-full text-left py-1.5 text-xs"
+                    [class]="
+                      sortBy() === 'priceHighLow'
+                        ? 'text-egyptian-clay font-bold'
+                        : 'text-dark-teal/60'
+                    "
+                  >
+                    Price: High to Low
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
 
       <!-- MAIN CONTENT: GRID + PAGINATION (Full Width) -->
       <div class="w-full">

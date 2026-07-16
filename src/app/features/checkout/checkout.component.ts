@@ -69,7 +69,7 @@ export class CheckoutComponent {
 
   getWhatsAppLink(): string {
     const formValues = this.checkoutForm.getRawValue();
-    const ownerPhoneNumber = '201148483939';
+    const ownerPhoneNumber = '201069950884';
 
     const message =
       `Hello, I have placed an order via InstaPay.\n\n` +

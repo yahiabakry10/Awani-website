@@ -33,6 +33,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   private queryParamsSub!: Subscription;
 
+  // mobile drawer
+  readonly showMobileFilters: WritableSignal<boolean> = signal<boolean>(false);
+
   /**
    * Loading state
    */
