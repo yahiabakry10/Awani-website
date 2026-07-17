@@ -59,6 +59,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
    * Settings for price and sort
    */
   readonly minPrice: WritableSignal<number> = signal<number>(0);
+
   /* Get absolute max price - used to set the max value of the price slider */
   readonly absoluteMaxPrice: Signal<number> = computed(() => {
     const products = this.allProducts();
@@ -67,7 +68,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
     if (products.length === 0) return 1500; // default value if data is still loading
 
     const currentCategoryProducts =
-      category === 'ALL' ? products : products.filter((p) => p.category === category);
+      category === 'ALL'
+        ? products
+        : products.filter((p) => p.category?.trim() === category.trim());
 
     if (currentCategoryProducts.length === 0) return 1500; // default value if data is still loading
 
@@ -90,9 +93,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
     const sortOption = this.sortBy();
     const searchStr = this.navbarSearchQuery().toLowerCase().trim();
 
-    // filter by category
     if (category !== 'ALL') {
-      products = products.filter((p) => p.category === category);
+      products = products.filter((p) => p.category?.trim() === category.trim());
     }
 
     // filter by search

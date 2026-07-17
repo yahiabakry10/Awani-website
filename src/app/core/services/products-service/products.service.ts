@@ -72,7 +72,12 @@ export class ProductsService {
     const allProducts = this.products();
     if (!allProducts.length) return [];
 
-    const uniqueCategoryNames = [...new Set(allProducts.map((p) => p.category))];
+    // clean  the extra spaces in category names
+    const uniqueCategoryNames = [
+      ...new Set(
+        allProducts.map((p) => p.category?.trim()).filter((cat): cat is string => !!cat), // filtering null or undefined values
+      ),
+    ];
 
     const categoryImages: Record<string, string> = {
       'Mugs & Cups': '/images/Mugs&CupsCat.webp',
@@ -82,7 +87,8 @@ export class ProductsService {
 
     return uniqueCategoryNames.map((name) => ({
       name,
-      count: allProducts.filter((p) => p.category === name).length,
+      // to ensure accuracy in counting products inside category, we trim the category name
+      count: allProducts.filter((p) => p.category?.trim() === name).length,
       image: categoryImages[name] || '/images/Mugs&CupsCat.webp',
     }));
   });
@@ -99,7 +105,7 @@ export class ProductsService {
    */
   getProductsByCategory(category: string): Observable<Product[]> {
     return this.productsCache$.pipe(
-      map((products) => products.filter((p) => p.category === category)),
+      map((products) => products.filter((p) => p.category?.trim() === category.trim())),
     );
   }
 
