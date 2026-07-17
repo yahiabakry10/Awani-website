@@ -124,7 +124,7 @@
 
           @if (wishlistService.wishlistCount() > 0) {
             <span
-              class="absolute top-1 right-1 w-4 h-4 bg-egyptian-clay text-white text-[9px] flex items-center justify-center rounded-full animate-pulse font-body font-bold tabular-nums"
+              class="absolute top-1 right-1 w-4 h-4 bg-egyptian-clay text-white text-[9px] flex items-center justify-center rounded-full font-body font-bold tabular-nums"
             >
               {{ wishlistService.wishlistCount() }}
             </span>
@@ -134,7 +134,8 @@
         <!-- Cart Icon -->
         <button
           (click)="cartService.toggleCart()"
-          class="relative p-2 text-cream-mesh transition-colors group"
+          class="relative p-2 text-cream-mesh hover:text-egyptian-clay transition-colors group block cursor-pointer"
+          aria-label="View Bag"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +154,7 @@
           </svg>
           @if (cartService.cartCount() > 0) {
             <span
-              class="absolute top-1 right-1 w-4 h-4 bg-egyptian-clay text-white text-[9px] flex items-center justify-center rounded-full animate-pulse"
+              class="absolute top-1 right-1 w-4 h-4 bg-egyptian-clay text-white text-[9px] flex items-center justify-center rounded-full"
             >
               {{ cartService.cartCount() }}
             </span>
