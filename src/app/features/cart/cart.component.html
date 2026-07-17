@@ -140,7 +140,7 @@
                     </svg>
                   </button>
                 </div>
-                <span class="text-egyptian-clay font-serif font-medium text-base sm:text-lg">{{
+                <span class="text-egyptian-clay font-medium text-base sm:text-lg">{{
                   item.product.price | currency: 'EGP'
                 }}</span>
               </div>
@@ -163,10 +163,12 @@
           <span class="font-medium">{{ shippingFee }} EGP</span>
         </div>
         <div
-          class="flex justify-between text-dark-teal font-heading text-lg sm:text-xl pt-4 border-t border-dark-teal/10"
+          class="flex justify-between text-dark-teal text-lg sm:text-xl pt-4 border-t border-dark-teal/10"
         >
           <span>Total</span>
-          <span class="text-egyptian-clay font-medium">{{ cartTotal() + shippingFee }} EGP</span>
+          <span class="text-egyptian-clay font-medium">{{
+            cartTotal() + shippingFee | currency: 'EGP'
+          }}</span>
         </div>
       </div>
 
