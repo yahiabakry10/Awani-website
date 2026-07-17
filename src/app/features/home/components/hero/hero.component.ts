@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 interface HeroSlide {
   url: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
 }
 
 @Component({
@@ -26,17 +26,14 @@ export class HeroComponent {
     {
       url: '/images/Hero-1.webp',
       title: 'Elevate Your Living Space',
-      subtitle: 'New Autumn Collection',
     },
     {
       url: '/images/Hero-2.webp',
       title: 'Simplicity Meets Comfort',
-      subtitle: 'Minimalist Furniture Design',
     },
     {
       url: '/images/Hero-3.webp',
       title: 'Crafted For Modern Homes',
-      subtitle: 'Handmade Artifacts & Decor',
     },
   ]);
 

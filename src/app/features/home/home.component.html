@@ -4,16 +4,19 @@
 <!-- Shop By Category Section -->
 <section class="py-24 md:py-32 px-6">
   <div class="max-w-[1400px] mx-auto">
-    <div class="flex flex-col md:flex-row justify-start items-center mb-16 gap-6">
-      <div>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl text-dark-teal font-bold mb-4 tracking-wide">
-          Shop by Category
-        </h2>
-        <p class="text-muted-slate">
-          Explore our curated collections, designed to bring warmth and character to every corner of
-          your home.
-        </p>
-      </div>
+    <!-- Refined Header Alignment -->
+    <div
+      class="flex flex-col items-center md:items-start text-center md:text-left mb-16 md:mb-24 max-w-2xl mx-auto md:mx-0"
+    >
+      <h2
+        class="text-4xl md:text-5xl lg:text-6xl text-dark-teal font-heading font-bold mb-5 tracking-wide leading-[1.1]"
+      >
+        Shop by Category
+      </h2>
+      <p class="text-muted-slate text-base md:text-lg leading-relaxed max-w-xl">
+        Explore our curated collections, designed to bring warmth and character to every corner of
+        your home.
+      </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 container mx-auto">
@@ -89,22 +92,39 @@
 </section>
 
 <!-- ================= FEATURED INDEX COLLECTION ================= -->
-<section class="container mx-auto px-4 sm:px-6 py-28 bg-cream-mesh text-dark-teal">
+<section class="container mx-auto px-4 sm:px-6 py-24 md:py-32 bg-cream-mesh text-dark-teal">
+  <!-- Premium Spaced Header with Outline Button -->
   <div
-    class="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-border-teal pb-6 gap-4"
+    class="flex flex-col items-center md:flex-row md:justify-between md:items-end gap-8 mb-16 md:mb-20"
   >
-    <div>
-      <h2
-        class="text-3xl md:text-4xl lg:text-5xl font-heading tracking-wide capitalize text-dark-teal font-bold"
-      >
-        Our Collection
-      </h2>
-    </div>
+    <h2
+      class="text-4xl md:text-5xl lg:text-6xl font-heading tracking-wide capitalize text-dark-teal font-bold leading-[1.1] text-center md:text-left"
+    >
+      Our Collection
+    </h2>
+
+    <!-- High-End Outline Button -->
     <a
       routerLink="/products"
-      class="px-5 py-2.5 w-fit bg-dark-teal hover:bg-egyptian-clay text-white transition-all duration-500 text-xs tracking-[0.2em] font-medium"
-      >View All</a
+      class="group inline-flex items-center rounded-md gap-2.5 px-7 py-3.5 border border-dark-teal/30 text-dark-teal hover:bg-dark-teal hover:text-cream-mesh hover:border-dark-teal transition-all duration-300 text-[11px] tracking-[0.25em] font-bold uppercase cursor-pointer"
     >
+      <span>View All</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="transform transition-transform duration-300 group-hover:translate-x-1"
+      >
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
   </div>
 
   <!-- Perfectly integrated spacious 4-column layout grid -->
