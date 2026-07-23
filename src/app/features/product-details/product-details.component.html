@@ -1,5 +1,5 @@
 @if (isLoading()) {
-  <div class="max-w-[1400px] mx-auto px-6 py-16 animate-pulse">
+  <div class="max-w-350 mx-auto px-6 py-16 animate-pulse">
     <div class="flex items-center gap-2 mb-8">
       <div class="w-4 h-4 bg-dark-teal/15 rounded"></div>
       <div class="h-3 w-10 bg-dark-teal/15 rounded"></div>
@@ -73,7 +73,7 @@
     </section>
   </div>
 } @else if (product(); as product) {
-  <div class="max-w-[1400px] mx-auto px-6 py-16">
+  <div class="max-w-350 mx-auto px-6 py-16">
     <button
       (click)="goBack()"
       class="flex items-center gap-2 mb-8 hover:opacity-70 transition-opacity bg-transparent border-none cursor-pointer text-dark-teal text-xs uppercase tracking-wider"
@@ -141,7 +141,7 @@
         <div class="flex gap-4 mb-16">
           <button
             (click)="addToCart(product)"
-            class="flex-1 py-5 flex items-center justify-center gap-3 bg-dark-teal text-white text-xs uppercase tracking-widest hover:bg-egyptian-clay transition-colors shadow-lg shadow-dark-teal/10 cursor-pointer"
+            class="flex-1 py-5 flex items-center justify-center gap-3 bg-dark-teal text-white text-xs uppercase tracking-widest hover:bg-egyptian-clay transition-colors rounded-md shadow-lg shadow-dark-teal/10 cursor-pointer"
           >
             <svg
               width="18"
@@ -157,13 +157,13 @@
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <path d="M16 10a4 4 0 0 1-8 0"></path>
             </svg>
-            Add to Cart
+            Add to Bag
           </button>
 
           <button
             (click)="toggleWishlist(product)"
             aria-label="Toggle wishlist"
-            class="w-16 flex items-center justify-center border transition-all duration-300 active:scale-95 group/wish hover:border-egyptian-clay cursor-pointer"
+            class="w-16 flex items-center justify-center rounded-md border transition-all duration-300 active:scale-95 group/wish hover:border-egyptian-clay cursor-pointer"
             [class.border-egyptian-clay]="wishlistService.isInWishlist(product.id)"
             [class.border-dark-teal]="!wishlistService.isInWishlist(product.id)"
             [class.border-opacity-20]="!wishlistService.isInWishlist(product.id)"
@@ -223,7 +223,7 @@
         <h2 class="text-center mb-8 uppercase tracking-wider text-dark-teal text-2xl">
           You May Also Like
         </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
           @for (relatedProduct of relatedProducts(); track relatedProduct.id) {
             <app-products-card [product]="relatedProduct" />
           }
@@ -232,7 +232,7 @@
     }
   </div>
 } @else {
-  <div class="max-w-[1400px] mx-auto px-6 py-16 text-center">
+  <div class="max-w-350 mx-auto px-6 py-16 text-center">
     <h2 class="text-dark-teal text-2xl">Product not found</h2>
     <a
       routerLink="/products"
